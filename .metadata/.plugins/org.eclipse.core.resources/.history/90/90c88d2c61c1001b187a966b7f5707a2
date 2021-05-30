@@ -1,0 +1,33 @@
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class LogTest {
+	
+	/**
+	 * 
+	 * @param n
+	 * @return logN - power of 2 to get n (see tests)
+	 */
+	
+	public static int log2(long n) {
+		count = 0
+				if(num>0){
+					while(num>1){
+						num >>=1
+						count++
+					}
+				} else {
+					while(num<-1){
+						num >>= 1
+						count++
+					}
+				}
+				return count
+	}
+	@Test
+	void test() {
+		fail("Not yet implemented");
+	}
+
+}

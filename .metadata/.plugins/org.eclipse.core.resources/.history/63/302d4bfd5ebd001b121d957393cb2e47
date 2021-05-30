@@ -1,0 +1,23 @@
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class OperationsTest {
+
+	@Test
+	void test() {
+		byte a, b = 10, c = 20;
+		int x;
+		a = (byte)((int)b + c);
+		x = b + c;
+		assertEquals(30, a);
+		assertEquals(4, 5 & 6);
+		assertEquals(7, 5 | 6);
+		assertEquals(6, 5 ^ 3);
+		assertEquals(5, 6 ^ 3);
+		assertEquals(0, 412343253 ^ 412343253);
+		assertEquals(2, ~5);
+		assertEquals(-1, 25467 ^ ~25467);
+	}
+
+}

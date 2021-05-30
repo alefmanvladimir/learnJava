@@ -1,0 +1,77 @@
+
+public class Operations {
+	/**
+	 * 
+	 * @param number - given number
+	 * @param nBit   - given sequential number of bit from 0
+	 * @return value of nBit in the given number (see tests)
+	 */
+	public static int getBit(int number, int nBit) {
+		int bitValue = 0;
+		// here your code goes
+		// ............
+		bitValue = (number >> nBit) & 1;
+		return bitValue;
+	}
+
+	public static int getNumberSetBits(int number) {
+		int count = 0;
+		int lengthBit = 0;
+		int num = number;
+		while (num >= 1) {
+			num /= 2;
+			lengthBit++;
+		}
+		for (int i = 0; i < lengthBit; i++) {
+			count = ((number >> i) & 1) == 1 ? count + 1 : count;
+//			if( ((number >> i) & 1) == 1) {
+//				count++;
+//			}
+		}
+		return count;
+	}
+
+	public static int 
+
+	/**
+	 * 
+	 * @param number - given number
+	 * @param nBit
+	 * @return new number (as a particular case it may be the same number) with
+	 *         value of the given bit - 1 (see tests)
+	 */
+	public static int setBit(int number, int nBit) {
+		int numberRes = number;
+		// here your code goes
+		// ............
+		if (getBit(numberRes, nBit) == 0) {
+			numberRes = numberRes | (1 << nBit);
+
+			// another solution
+			// numberRes = numberRes + (1<<nBit);
+		}
+
+		return numberRes;
+	}
+
+	/**
+	 * 
+	 * @param number - given number
+	 * @param nBit
+	 * @return new number (as a particular case it may be the same number) with
+	 *         value of the given bit - 0 (see tests)
+	 */
+	public static int resetBit(int number, int nBit) {
+		int numberRes = number;
+		// here your code goes
+		// ............
+
+		if (getBit(numberRes, nBit) == 1) {
+			numberRes = numberRes ^ (1 << nBit);
+			// another solutions
+			// numberRes = numberRes-(1<<nBit);
+		}
+		return numberRes;
+	}
+
+}

@@ -1,0 +1,19 @@
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class LogTest {
+	/**
+	 * 
+	 * @param n
+	 * @return logN - power
+	 */
+	public static int log2(long n) {
+		return 0;
+	}
+	@Test
+	void test() {
+		fail("Not yet implemented");
+	}
+
+}
