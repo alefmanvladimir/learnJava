@@ -17,7 +17,6 @@ public class Operations {
 			n >>= 1;
 			count++;
 		}
-		
 		return count;
 	}
 }

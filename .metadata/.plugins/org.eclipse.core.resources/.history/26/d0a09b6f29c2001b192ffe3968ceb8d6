@@ -8,16 +8,14 @@ public class Operations {
 
 	public static int log2(long n) {
 		int count = 0;
-		
 		if (n < 0) {
-			n = -n;
+			
+		} else {
+			while (n < -1) {
+				n >>= 1;
+				count++;
+			}
 		}
-		
-		while (n > 1) {
-			n >>= 1;
-			count++;
-		}
-		
 		return count;
 	}
 }

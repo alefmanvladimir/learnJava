@@ -28,4 +28,19 @@
 	<section name="ClasspathContainerSelectionPage">
 		<item key="index" value="0"/>
 	</section>
+	<section name="FatJarPackageWizard">
+		<item key="FatJarPackageWizardPage.ANTSCRIPT_SAVE" value="false"/>
+		<item key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION" value="C:\Users\smaga\Documents\learnJava"/>
+		<item key="FatJarPackageWizardPage.LIBRARY_HANDLING" value="1"/>
+		<item key="FatJarPackageWizardPage.LAUNCH_CONFIGURATION_SELECTION_NAME" value="LogSportLotto - LogSportLotto"/>
+		<item key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION" value="LogSportLotto\runnableFile.jar"/>
+		<list key="FatJarPackageWizardPage.DESTINATION_NAMES_ID">
+			<item value="LogSportLotto\runnableFile.jar"/>
+			<item value="LogSportLotto/runnableFile.jar"/>
+		</list>
+		<list key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION_HISTORY">
+			<item value="C:\Users\smaga\Documents\learnJava.xml"/>
+			<item value=".xml"/>
+		</list>
+	</section>
 </section>
