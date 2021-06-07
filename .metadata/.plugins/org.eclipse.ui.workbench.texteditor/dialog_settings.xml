@@ -6,9 +6,17 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
+		<item key="selection" value="lastIndex"/>
 		<list key="findhistory">
+			<item value="index"/>
+			<item value="rigth"/>
+			<item value="ar[(left+rigth)/2]"/>
+			<item value="bitMask"/>
 		</list>
 		<list key="replacehistory">
+			<item value="lastIndex"/>
+			<item value="_num"/>
+			<item value="bitMax"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

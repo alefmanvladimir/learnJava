@@ -30,8 +30,6 @@ public class Operations {
 	}
 
 	public static int log2(long n) {
-
 		return n > (-1 >>> 1) ? log2Rtl(n) : log2Ltr(n);
-		// проверить путь по которому быстрее найдем результат
 	}
 }

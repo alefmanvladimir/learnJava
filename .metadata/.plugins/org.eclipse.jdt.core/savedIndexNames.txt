@@ -1,19 +1,6 @@
 INDEX VERSION 1.131+C:\Users\smaga\Documents\learnJava\.metadata\.plugins\org.eclipse.jdt.core
-1630239350.index
-2154331006.index
-2911992256.index
-955809931.index
-3609675338.index
-78972839.index
-3398831477.index
-1642175237.index
-3588046187.index
-427047123.index
-3421569801.index
+970357865.index
 2746542867.index
-2906021182.index
-1743450064.index
+3626524498.index
 4219279280.index
-2011145364.index
 4277979961.index
-1494500206.index

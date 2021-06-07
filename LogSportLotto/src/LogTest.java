@@ -13,6 +13,7 @@ class LogTest {
 		assertEquals(10, Operations.log2(1024));
 		assertEquals(10, Operations.log2(-1024));
 		assertEquals(39, Operations.log2(549755813888L));
+		assertEquals(62, Operations.log2(4611686018427388000L));
 	}
 
 }
