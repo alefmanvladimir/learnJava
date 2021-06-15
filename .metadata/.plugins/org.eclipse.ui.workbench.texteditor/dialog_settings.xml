@@ -6,8 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="ArraysMethods"/>
+		<item key="selection" value="remove"/>
 		<list key="findhistory">
+			<item value="remove"/>
 			<item value="Operations"/>
 			<item value="{2, 2, 2, 2, 3, 4,"/>
 			<item value="index"/>

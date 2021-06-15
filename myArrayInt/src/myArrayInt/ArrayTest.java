@@ -14,19 +14,19 @@ class ArrayTest {
 	@Test
 	void test() {
 		
-//		short [] array = getShortArray(N_NUMBERS);
-//		array = Operations.sort(array);
-//		for(int i=0; i<array.length-1; i++) {
-//			assertTrue(array[i]<=array[i+1]);
-//		}
-//		
+		short [] array = getShortArray(N_NUMBERS);
+		array = Operations.sort(array);
+		for(int i=0; i<array.length-1; i++) {
+			assertTrue(array[i]<=array[i+1]);
+		}
+		
 //		Operations.insert(null, N_NUMBERS, N_NUMBERS)
 
 	}
 
-	private short[] getShortArray(int nNumbers) {
-		short res[] = new short[nNumbers];
-		for (int i = 0; i < nNumbers; i++) {
+	private short[] getShortArray(int N_NUMBERS) {
+		short res[] = new short[N_NUMBERS];
+		for (int i = 0; i < N_NUMBERS; i++) {
 			res[i] = (short) (Math.random() * Short.MAX_VALUE);
 		}
 		return res;
