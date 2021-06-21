@@ -94,32 +94,35 @@ public class ArrayList<T> implements List<T> {
 
 	}
 
-	private void clean(int sizeBefore) {
-		for (int i = size; i < sizeBefore; i++) {
+	private void clean(int _size, int sizeBefore) {
+		for (int i = _size; i < sizeBefore; i++) {
 			array[i] = null;
 		}
+		size = _size;
 	}
 
-	private boolean removing(List<T> patterns, Predicate<T> predicate) {
+	private boolean removing(Predicate<T> predicate) {
 		int sizeBeforeRemoving = size;
+		int _size = size;
 		int currentIndex = 0;
 		for (int i = 0; i < sizeBeforeRemoving; i++) {
 			T current = array[i];
-			if (conditionRemoving(patterns, current, predicate)) {
-				size--;
+			if (conditionRemoving(current, predicate)) {
+				_size--;
+				System.out.println(current);
 			} else {
 				array[currentIndex++] = array[i];
 			}
 		}
-		boolean res = sizeBeforeRemoving > size;
+		boolean res = sizeBeforeRemoving > _size;
 		if (res) {
-			clean(sizeBeforeRemoving);
+			clean(_size, sizeBeforeRemoving);
 		}
 		return res;
 
 	}
 
-	private boolean conditionRemoving(List<T> patterns, T current, Predicate<T> predicate) {
+	private boolean conditionRemoving(T current, Predicate<T> predicate) {
 		return predicate.test(current);
 	}
 
@@ -165,7 +168,7 @@ public class ArrayList<T> implements List<T> {
 
 	@Override
 	public boolean removeIf(Predicate<T> predicate) {
-		return removing(this, predicate);
+		return removing(predicate);
 		
 	}
 

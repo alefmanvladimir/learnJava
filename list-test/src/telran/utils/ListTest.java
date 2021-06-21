@@ -212,6 +212,23 @@ class ListTest {
 	}
 	
 	@Test
+	void removeRepeatedTest() {
+		listInt.add(4);
+		listInt.add(6);
+		listInt.add(3);
+		listInt.add(1);
+		listInt.add(2);
+		listInt.removeRepeated();
+		for(int i=0; i<listInt.size(); i++) {
+			System.out.print(listInt.get(i) + ",");
+		}
+//		System.out.println(" ");
+//		System.out.print(listInt.indexOf(2));
+//		System.out.print(listInt.lastIndexOf(2));
+		
+	}
+	
+	@Test
 	void cleanTest() {
 		assertEquals(5, listInt.size());
 		listInt.clean();

@@ -175,7 +175,9 @@ public interface List<T> {
 	 * @return true if at least one object has been removed
 	 */
 	default boolean removeRepeated() {
-		Predicate<T> pred = (elem) -> this.indexOf(elem) != this.lastIndexOf(elem) && this.indexOf(elem)>=0;
+		Predicate<T> pred = (elem) -> this.indexOf(elem) != this.lastIndexOf(elem) 
+				&& this.indexOf(elem)>=0
+				&& this.lastIndexOf(elem)>=0;
 		return removeIf(pred);
 	}
 	
