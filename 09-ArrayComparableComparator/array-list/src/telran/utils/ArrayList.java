@@ -1,8 +1,6 @@
 package telran.utils;
 
 import java.util.Arrays;
-import java.util.function.Predicate;
-
 
 @SuppressWarnings("unchecked")
 public class ArrayList<T> implements List<T> {
@@ -79,6 +77,24 @@ public class ArrayList<T> implements List<T> {
 	}
 
 	@Override
+	public int indexOf(T pattern) {
+		int index = 0;
+		while (index < size && !array[index].equals(pattern)) {
+			index++;
+		}
+		return index < size ? index : -1;
+	}
+
+	@Override
+	public int lastIndexOf(T pattern) {
+		int index = size - 1;
+		while (index >= 0 && !array[index].equals(pattern)) {
+			index--;
+		}
+		return index >= 0 ? index : -1;
+	}
+
+	@Override
 	public boolean remove(T pattern) {
 
 		return remove(indexOf(pattern));
@@ -91,21 +107,40 @@ public class ArrayList<T> implements List<T> {
 			add(objects.get(i));
 
 		}
+		
 
+
+	}
+
+	@Override
+	public boolean removeAll(List<T> patterns) {
+		boolean isRetain = false;
+		boolean res = false;
+		if (this == patterns) {
+			size = 0;
+			clean(size);
+			res = true;
+		} else {
+			res =  removing(patterns, isRetain);
+		}
+		return res;
+		
+		
 	}
 
 	private void clean(int sizeBefore) {
 		for (int i = size; i < sizeBefore; i++) {
 			array[i] = null;
 		}
+		
 	}
 
-	private boolean removing(List<T> patterns, Predicate<T> predicate) {
+	private boolean removing(List<T> patterns, boolean isRetain) {
 		int sizeBeforeRemoving = size;
 		int currentIndex = 0;
-		for (int i = 0; i < sizeBeforeRemoving; i++) {
+		for(int i = 0; i < sizeBeforeRemoving; i++) {
 			T current = array[i];
-			if (conditionRemoving(patterns, current, predicate)) {
+			if (conditionRemoving(patterns, current, isRetain)) {
 				size--;
 			} else {
 				array[currentIndex++] = array[i];
@@ -116,11 +151,19 @@ public class ArrayList<T> implements List<T> {
 			clean(sizeBeforeRemoving);
 		}
 		return res;
-
+		
 	}
 
-	private boolean conditionRemoving(List<T> patterns, T current, Predicate<T> predicate) {
-		return predicate.test(current);
+	private boolean conditionRemoving(List<T> patterns, T current,
+			boolean isRetain) {
+		boolean res = patterns.indexOf(current) >= 0;
+		return isRetain ? !res : res;
+	}
+
+	@Override
+	public boolean retainAll(List<T> patterns) {
+		boolean isRetain = true;
+		return this == patterns ? false : removing(patterns, isRetain);
 	}
 
 	@Override
@@ -145,36 +188,6 @@ public class ArrayList<T> implements List<T> {
 		return res;
 	}
 
-	@Override
-	public int indexOf(Predicate<T> predicate) {
-		int index = 0;
-		while (index < size && !predicate.test(array[index])) {
-			index++;
-		}
-		return index < size ? index : -1;
-	}
-
-	@Override
-	public int lastIndexOf(Predicate<T> predicate) {
-		int size = size()-1;
-		while (size >=0 && !predicate.test(array[size])) {
-			size--;
-		}
-		return size >= 0 ? size : -1;
-	}
-
-	@Override
-	public boolean removeIf(Predicate<T> predicate) {
-		return removing(this, predicate);
-		
-	}
-
-	@Override
-	public void clean() {
-		while(size>0) {
-			array[size-1] = null;
-			size--;
-		}
-	}
+	
 
 }

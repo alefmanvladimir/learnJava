@@ -1,7 +1,6 @@
 package telran.utils;
 
 import java.util.Comparator;
-import java.util.function.Predicate;
 
 public interface List<T> {
 /**
@@ -43,20 +42,14 @@ public interface List<T> {
 	 * @return index of first occurrence for an object equaled to the pattern
 	 * in the case no object equaled to the pattern returns -1
 	 */
-	default int indexOf(T pattern) {
-		Predicate<T> pred = (elem) -> elem.equals(pattern);
-		return indexOf(pred);
-	}
+	int indexOf(T pattern);
 	/**
 	 * 
 	 * @param pattern
 	 * @return index of the last occurrence for an object equaled to the pattern
 	 * in the case no object equaled to the pattern, returns -1
 	 */
-	default int lastIndexOf(T pattern) {
-		Predicate<T> pred = (elem) -> elem.equals(pattern);
-		return lastIndexOf(pred);
-	}
+	int lastIndexOf(T pattern);
 	
 	/**
 	 * removes first occurred object equaled to a given pattern
@@ -77,20 +70,14 @@ public interface List<T> {
 	 * @param patterns
 	 * @return true if at least one object has been removed
 	 */
-	default boolean removeAll (List<T> patterns) {
-		Predicate<T> pred = (elem) -> patterns.indexOf(elem)>=0;
-		return removeIf(pred);
-	}
+	boolean removeAll (List<T> patterns);
 	
 	/**
 	 * removes all objects not equaled to the given patterns
 	 * @param patterns
 	 * @return true if at least one object has been removed
 	 */
-	default boolean retainAll (List<T> patterns) {
-		Predicate<T> pred = (elem) -> patterns.indexOf(elem)<0;
-		return removeIf(pred);
-	}
+	boolean retainAll (List<T> patterns);
 	
 	/**
 	 * sets new reference to an object at existing index
@@ -107,6 +94,9 @@ public interface List<T> {
 	 * @return return true if swapped, false in the case of any wrong index
 	 */
 	boolean swap(int index1, int index2);
+	
+	
+	
 	default boolean contains(T pattern) {
 		return indexOf(pattern) >= 0;
 	}
@@ -128,61 +118,13 @@ public interface List<T> {
 	static <T> T min(List<T> list, Comparator<T> comp) {
 		return max(list, comp.reversed());
 	}
-	@SuppressWarnings("unchecked")
-	static <T> T min(List<T> list) {
-		return min(list, (Comparator<T>)Comparator.naturalOrder());
-	}
-	@SuppressWarnings("unchecked")
 	default void sort() {
-		sort((Comparator<T>)Comparator.naturalOrder());
+		//TODO sorting in natural order (Comparable defines natural order)
 	}
 	default void sort(Comparator<T> comp) {
-		int size = size();
-		boolean isSorted = true;
-		do {
-			size--;
-			isSorted = true;
-			for(int i = 0; i < size; i++) {
-				if (comp.compare(get(i), get(i + 1)) > 0) {
-					isSorted = false;
-					swap(i, i + 1);
-				}
-			}
-		}while(!isSorted);
-	}
-	/**
-	 * 
-	 * @param predicate
-	 * @return either index (first object matching predicate) or -1 
-	 */
-	int indexOf(Predicate<T> predicate);
-	
-	/**
-	 * 
-	 * @param predicate
-	 * @return either index (last object matching predicate) or -1 
-	 */
-	int lastIndexOf(Predicate<T> predicate);
-	/**
-	 * removing all objects matching a given predicate
-	 * @param predicate
-	 * @return true if at least one object has been removed
-	 */
-	boolean removeIf(Predicate<T> predicate);
-	
-	/**
-	 * for several equaled objects to leave only one and remove others 
-	 * @return true if at least one object has been removed
-	 */
-	default boolean removeRepeated() {
-		Predicate<T> pred = (elem) -> this.indexOf(elem) == this.lastIndexOf(elem) && this.indexOf(elem)>=0;
-		return removeIf(pred);
+		//TODO sorting according to the given comparator
 	}
 	
-	/**
-	 * remove all elements from list
-	 */
-	void clean() ;
 	
 
 }

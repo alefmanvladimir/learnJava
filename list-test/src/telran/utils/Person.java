@@ -1,13 +1,14 @@
 package telran.utils;
 
-public class Person {
-	int id;
-	String name;
+public class Person implements Comparable<Person> {
+	public Person(int id1, String name) {
 
-	public Person(int _id, String name) {
-		id = _id;
+		id = id1;
 		this.name = name;
 	}
+
+	int id;
+	String name;
 
 	@Override
 	public int hashCode() {
@@ -21,13 +22,26 @@ public class Person {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
+		if (!(obj instanceof Person))
 			return false;
 		Person other = (Person) obj;
 		if (id != other.id)
 			return false;
 		return true;
 	}
+
+	@Override
+	public int compareTo(Person o) {
+
+		return id - o.id;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
 }
