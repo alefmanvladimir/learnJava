@@ -4,4 +4,6 @@
     <fullyQualifiedTypeName name="org.junit.Assert"/>
     <fullyQualifiedTypeName name="myArrayInt.Operations"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="java.util.LinkedList"/>
+    <fullyQualifiedTypeName name="telran.utils.LinkedList"/>
 </qualifiedTypeNameHistroy>

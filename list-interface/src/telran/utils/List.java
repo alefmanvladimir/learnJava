@@ -70,7 +70,12 @@ public interface List<T> {
 	 * adds all objects 
 	 * @param objects
 	 */
-	void addAll(List<T> objects);
+	default void addAll(List<T> objects) {
+		int size = objects.size();
+		for (int i = 0; i < size; i++) {
+			add(objects.get(i));
+		}
+	}
 	
 	/**
 	 * removes all objects equaled to the given patterns
@@ -175,9 +180,22 @@ public interface List<T> {
 	 * @return true if at least one object has been removed
 	 */
 	default boolean removeRepeated() {
-		Predicate<T> pred = (elem) -> this.indexOf(elem) != this.lastIndexOf(elem) 
-				&& this.indexOf(elem)>=0
-				&& this.lastIndexOf(elem)>=0;
+		T helper[] = (T[]) new Object[size()];
+		
+		Predicate<T> pred = (elem) -> {
+			boolean res = true;
+			int ind = 0;
+			while(helper[ind] != null && !helper[ind].equals(elem)) {
+				ind++;
+			}
+			if(helper[ind]==null) {
+				res = false;
+				helper[ind] = elem;
+			}
+			
+			return res;			
+		};
+				
 		return removeIf(pred);
 	}
 	

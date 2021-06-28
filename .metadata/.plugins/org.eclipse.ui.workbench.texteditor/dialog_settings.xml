@@ -6,8 +6,13 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="for"/>
+		<item key="selection" value="System"/>
 		<list key="findhistory">
+			<item value="system"/>
+			<item value="teal"/>
+			<item value="removing("/>
+			<item value="removing"/>
+			<item value="lastIndexOf"/>
 			<item value="for"/>
 			<item value="removeAll"/>
 			<item value="indexOf"/>
@@ -16,15 +21,11 @@
 			<item value="indexof"/>
 			<item value="Predicate"/>
 			<item value="ArrayList"/>
-			<item value="removing"/>
 			<item value="DividerNumbersPredicate"/>
 			<item value="test"/>
-			<item value="predicate"/>
-			<item value="set"/>
-			<item value="remove"/>
-			<item value="Operations"/>
 		</list>
 		<list key="replacehistory">
+			<item value="tail"/>
 			<item value="elemExist"/>
 			<item value="ArraysMethods"/>
 			<item value="lastIndex"/>
@@ -33,8 +34,8 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="375"/>
-		<item key="DIALOG_Y_ORIGIN" value="359"/>
+		<item key="DIALOG_X_ORIGIN" value="951"/>
+		<item key="DIALOG_Y_ORIGIN" value="434"/>
 		<item key="DIALOG_WIDTH" value="336"/>
 		<item key="DIALOG_HEIGHT" value="454"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>

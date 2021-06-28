@@ -6,6 +6,8 @@
 <item elementID="=list-interface" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=array-list" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=list-test" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=linked-list" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=abstract-list" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 </workingSet>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1620736920262_2" label="Window Working Set" name="Aggregate for window 1620736920261"/>
 <mruList name="Lists"/>

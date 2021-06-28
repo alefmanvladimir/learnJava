@@ -5,10 +5,9 @@ import java.util.function.Predicate;
 
 
 @SuppressWarnings("unchecked")
-public class ArrayList<T> implements List<T> {
+public class ArrayList<T> extends AbstractList<T> {
 	private static final int DEFAULT_CAPACITY = 16;
 	private T array[];
-	int size = 0;
 
 	public ArrayList(int capacity) {
 		array = (T[]) new Object[capacity];
@@ -68,10 +67,6 @@ public class ArrayList<T> implements List<T> {
 		return res;
 	}
 
-	private boolean isValidIndex(int index) {
-		return index >= 0 && index < size;
-	}
-
 	@Override
 	public int size() {
 
@@ -94,32 +89,10 @@ public class ArrayList<T> implements List<T> {
 
 	}
 
-	private void clean(int _size, int sizeBefore) {
-		for (int i = _size; i < sizeBefore; i++) {
+	private void clean(int sizeBefore) {
+		for (int i = size; i < sizeBefore; i++) {
 			array[i] = null;
 		}
-		size = _size;
-	}
-
-	private boolean removing(Predicate<T> predicate) {
-		int sizeBeforeRemoving = size;
-		int _size = size;
-		int currentIndex = 0;
-		for (int i = 0; i < sizeBeforeRemoving; i++) {
-			T current = array[i];
-			if (conditionRemoving(current, predicate)) {
-				_size--;
-				System.out.println(current);
-			} else {
-				array[currentIndex++] = array[i];
-			}
-		}
-		boolean res = sizeBeforeRemoving > _size;
-		if (res) {
-			clean(_size, sizeBeforeRemoving);
-		}
-		return res;
-
 	}
 
 	private boolean conditionRemoving(T current, Predicate<T> predicate) {
@@ -168,8 +141,21 @@ public class ArrayList<T> implements List<T> {
 
 	@Override
 	public boolean removeIf(Predicate<T> predicate) {
-		return removing(predicate);
-		
+		int sizeBeforeRemoving = size;
+		int currentIndex = 0;
+		for (int i = 0; i < sizeBeforeRemoving; i++) {
+			T current = array[i];
+			if (conditionRemoving(current, predicate)) {
+				size--;
+			} else {
+				array[currentIndex++] = array[i];
+			}
+		}
+		boolean res = sizeBeforeRemoving > size;
+		if (res) {
+			clean(sizeBeforeRemoving);
+		}
+		return res;
 	}
 
 	@Override
