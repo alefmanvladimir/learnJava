@@ -2,6 +2,7 @@ package telran.utils;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Iterator;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -17,10 +18,10 @@ class ListTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
-//		listInt =  new ArrayList<>(1);
-//		listString = new ArrayList<>();
-		listInt = new LinkedList<>();
-		listString = new LinkedList<>();
+		listInt = new ArrayList<>();
+		listString = new ArrayList<>();
+//		listInt =  new LinkedList<>();
+//		listString = new LinkedList<>();
 		listInt.add(1);
 		listInt.add(2);
 		listInt.add(3);
@@ -38,7 +39,6 @@ class ListTest {
 
 	@Test
 	void addIndexTest() {
-
 		assertTrue(listInt.add(100, 0));
 		assertEquals(100, listInt.get(0));
 		assertEquals(1, listInt.get(1));
@@ -49,9 +49,7 @@ class ListTest {
 		assertEquals(1, listInt.get(2));
 		assertFalse(listInt.add(400, -1));
 		assertFalse(listInt.add(400, 100));
-
 		assertEquals(8, listInt.size());
-
 	}
 
 	@Test
@@ -89,7 +87,7 @@ class ListTest {
 
 		Person prs1 = new Person(0, "Moshe");
 		Person pattern = new Person(0, null);// equals per only Person Id
-		List<Person> persons = new ArrayList<>();
+		List<Person> persons = new LinkedList<>();
 		persons.add(prs1);
 		assertEquals(0, persons.indexOf(pattern));
 
@@ -120,11 +118,32 @@ class ListTest {
 		for (int i = 0; i < sizeOld; i++) {
 			assertNotEquals(listInt.indexOf(listInt.get(i)), listInt.lastIndexOf(listInt.get(i)));
 		}
+		int count = 0;
+		for (Integer num : listInt) {
+			count++;
+		}
+		
+		assertEquals(listInt.size(), count);
 	}
 
 	@Test
 	void removeAll() throws Exception {
+		listInt.add(6);
+		listInt.add(7);
+		listInt.add(8);
+		listInt.add(9);
+		System.out.println("! ");
+		for(int i=0; i<listInt.size(); i++) {
+			System.out.print(listInt.get(i) + ", ");
+		}
 		listInt.removeAll(listInt);
+		System.out.println("! ");
+		System.out.println(listInt.size());
+		for(int i=0; i<listInt.size(); i++) {
+			System.out.print(listInt.get(i) + ", ");
+		}
+		System.out.println(" ");
+		System.out.println(listInt.indexOf(9));
 		assertEquals(0, listInt.size());
 		setUp();
 		listInt.add(2);
@@ -141,7 +160,7 @@ class ListTest {
 		listInt.retainAll(listInt);
 		assertEquals(5, listInt.size());
 		initialArrayTest();
-		List<Integer> patterns = new ArrayList<>();
+		List<Integer> patterns = new LinkedList<>();
 		patterns.add(2);
 		listInt.add(2);
 		listInt.retainAll(patterns);
@@ -207,15 +226,36 @@ class ListTest {
 		assertEquals(p2, listPersons.get(1));
 		fillRandomPersons(N_PERSONS);
 		listPersons.sort();
-		personsSortTest();
+		sortTestIterator(listPersons);
 
 	}
 
-	private void personsSortTest() {
-		int size = listPersons.size() - 1;
-		for (int i = 0; i < size; i++) {
-			assertTrue(listPersons.get(i).compareTo(listPersons.get(i + 1)) <= 0);
+	private <T> void sortTestIterator(List<T> list) {
+
+		if (list.size() >= 2) {
+			Iterator<T> it1 = list.iterator();
+			Iterator<T> it2 = list.iterator();
+			it2.next();
+			while(it2.hasNext()) {
+				assertTrue(((Comparable<T>)it1.next())
+						.compareTo(it2.next())<=0);
+			}
 		}
+	}
+
+	private void testArraySorted(Person[] array) {
+		for (int i = 1; i < array.length; i++) {
+			assertTrue(array[i - 1].compareTo(array[i]) <= 0);
+		}
+
+	}
+
+	private <T> void fillArrayFromList(List<T> list, T[] array) {
+		int index = 0;
+		for (T obj : list) {
+			array[index++] = obj;
+		}
+
 	}
 
 	private void fillRandomPersons(int nPersons) {
@@ -250,6 +290,7 @@ class ListTest {
 		assertEquals(3, listInt.size());
 		assertFalse(listInt.remove((Integer) 2));
 		assertFalse(listInt.remove((Integer) 4));
+
 	}
 
 	@Test
@@ -263,8 +304,15 @@ class ListTest {
 		for (int i = 0; i < 100; i++) {
 			addSameInReverse();
 		}
-
+//		System.out.println(listInt.size());
+//		for(int i=0; i<listInt.size(); i++) {
+//			System.out.print(listInt.get(i) + ", ");
+//		}
 		listInt.removeRepeated();
+//		System.out.println(listInt.size());
+//		for(int i=0; i<listInt.size(); i++) {
+//			System.out.print(listInt.get(i) + ", ");
+//		}
 		assertEquals(5, listInt.size());
 		initialArrayTest();
 

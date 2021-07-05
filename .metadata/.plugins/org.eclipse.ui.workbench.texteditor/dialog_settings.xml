@@ -6,25 +6,29 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="System"/>
+		<item key="selection" value="it.next"/>
 		<list key="findhistory">
-			<item value="system"/>
-			<item value="teal"/>
-			<item value="removing("/>
-			<item value="removing"/>
-			<item value="lastIndexOf"/>
-			<item value="for"/>
-			<item value="removeAll"/>
-			<item value="indexOf"/>
-			<item value="index"/>
-			<item value="conditionRemoving"/>
-			<item value="indexof"/>
+			<item value="Integer.MAX_VALUE-10"/>
+			<item value="it.next"/>
 			<item value="Predicate"/>
-			<item value="ArrayList"/>
-			<item value="DividerNumbersPredicate"/>
-			<item value="test"/>
+			<item value="next"/>
+			<item value="index"/>
+			<item value="predicate"/>
+			<item value="indexOf"/>
+			<item value="removeIf"/>
+			<item value="remo"/>
+			<item value="before"/>
+			<item value="print"/>
+			<item value="conditionRemoving"/>
+			<item value="remove"/>
+			<item value="size--;"/>
+			<item value="addAll"/>
 		</list>
 		<list key="replacehistory">
+			<item value="current"/>
+			<item value=""/>
+			<item value="sortTestIterator"/>
+			<item value="newHead"/>
 			<item value="tail"/>
 			<item value="elemExist"/>
 			<item value="ArraysMethods"/>
@@ -34,8 +38,8 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="951"/>
-		<item key="DIALOG_Y_ORIGIN" value="434"/>
+		<item key="DIALOG_X_ORIGIN" value="626"/>
+		<item key="DIALOG_Y_ORIGIN" value="74"/>
 		<item key="DIALOG_WIDTH" value="336"/>
 		<item key="DIALOG_HEIGHT" value="454"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>

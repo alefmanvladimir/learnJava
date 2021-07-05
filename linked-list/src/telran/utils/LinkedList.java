@@ -1,9 +1,12 @@
 package telran.utils;
 
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Iterator;
 import java.util.function.Predicate;
 
 public class LinkedList<T> extends AbstractList<T> {
-	static private class Node<T>{
+	static private class Node<T> {
 		public T obj;
 		public Node<T> next;
 		public Node<T> prev;
@@ -13,14 +16,32 @@ public class LinkedList<T> extends AbstractList<T> {
 		}
 
 	}
-	
-//	public LinkedList(List<T> array) {
-//		
-//		array = (T[]) new Object[capacity];
-//	}
 
 	private Node<T> head;
 	private Node<T> tail;
+
+	private class LinkedListIterator implements Iterator<T> {
+		Node<T> current = head;
+
+		@Override
+		public boolean hasNext() {
+
+			return current != null;
+		}
+
+		@Override
+		public T next() {
+			T res = current.obj;
+			current = current.next;
+			return res;
+		}
+
+		@Override
+		public void remove() {
+			removeNode(current == null ? tail : current.prev);
+		}
+
+	}
 
 	@Override
 	public void add(T obj) {
@@ -37,29 +58,29 @@ public class LinkedList<T> extends AbstractList<T> {
 
 	@Override
 	public boolean add(T obj, int index) {
-		if(index < 0 || index > size) {
+		if (index < 0 || index > size) {
 			return false;
 		} else {
-			
-			if(index==0) {
+
+			if (index == 0) {
 				addHead(obj);
-			} else if(index==size) {
+			} else if (index == size) {
 				add(obj);
 			} else {
-				Node <T> currentNode = getNodeIndex(index);
+				Node<T> currentNode = getNodeIndex(index);
 				Node<T> newNode = new Node<>(obj);
-				
+
 				newNode.next = currentNode;
 				newNode.prev = currentNode.prev;
 				currentNode.prev.next = newNode;
 				currentNode.prev = newNode;
 				size++;
 			}
-			
+
 			return true;
 		}
 	}
-	
+
 	private void addHead(T obj) {
 		Node<T> newHead = new Node<>(obj);
 		head.prev = newHead;
@@ -93,12 +114,12 @@ public class LinkedList<T> extends AbstractList<T> {
 	}
 
 	private boolean removeNode(Node<T> node) {
-		if(head==tail) {
+		if (head == tail) {
 			head = tail = null;
 			size = 0;
 			return true;
 		}
-		
+
 		if (node == head) {
 			removeHead();
 		} else if (node == tail) {
@@ -107,38 +128,48 @@ public class LinkedList<T> extends AbstractList<T> {
 			node.prev.next = node.next;
 			node.next.prev = node.prev;
 		}
-		
+
 		size--;
 		return true;
 	}
 
 	@Override
 	public boolean remove(T pattern) {
-		Node <T> node = getNode(pattern);
-		return node!=null?removeNode(node):false;
+		Node<T> node = getNode(pattern);
+		return node != null ? removeNode(node) : false;
 	}
-	
-	private Node <T> getNode(T pattern){
+
+	private Node<T> getNode(T pattern) {
 		Node<T> currentNode = head;
-		while (!currentNode.obj.equals(tail.obj) && !currentNode.obj.equals(pattern)) {
+		while (currentNode.next != null && !currentNode.obj.equals(pattern)) {
 			currentNode = currentNode.next;
 		}
 		return currentNode.obj.equals(pattern) ? currentNode : null;
 	}
 
-	public void addAll(LinkedList<T> objects) {
-		Node <T> objHead = objects.head;
-		tail.next = objHead;
-		objHead.prev = tail;
+	@Override
+	public void addAll(List<T> objects) {
+		if (objects instanceof LinkedList && this != objects) {
+			LinkedList<T> linkedList = (LinkedList<T>) objects;
+			addAllFromLinkedList(linkedList);
+		} else {
+			super.addAll(objects);
+		}
+	}
+
+	private void addAllFromLinkedList(LinkedList<T> objects) {
+		tail.next = objects.head;
+		objects.head.prev = tail;
 		tail = objects.tail;
+		size += objects.size();
 	}
 
 	@Override
 	public T set(T object, int index) {
 		T res = null;
-		
+
 		if (isValidIndex(index)) {
-			Node <T> node = getNodeIndex(index);
+			Node<T> node = getNodeIndex(index);
 			res = node.obj;
 			node.obj = object;
 		}
@@ -147,35 +178,35 @@ public class LinkedList<T> extends AbstractList<T> {
 
 	@Override
 	public boolean swap(int index1, int index2) {
-		if(isValidIndex(index1) && isValidIndex(index2) && index1!=index2) {
+		if (isValidIndex(index1) && isValidIndex(index2) && index1 != index2) {
 			Node<T> currentNode = head;
-			int maxIndex = index1-index2>0?index1:index2;
-			int minIndex = index1-index2>0?index2:index1;
-			Node <T> firstNode = new Node<>(null);
-			Node <T> secondNode;
-			
+			int maxIndex = index1 - index2 > 0 ? index1 : index2;
+			int minIndex = index1 - index2 > 0 ? index2 : index1;
+			Node<T> firstNode = new Node<>(null);
+			Node<T> secondNode;
+
 			for (int i = 0; i < maxIndex; i++) {
-				if(i==minIndex) {
+				if (i == minIndex) {
 					firstNode = currentNode;
 				}
 				currentNode = currentNode.next;
 			}
 			secondNode = currentNode;
-			
+
 			T obj = secondNode.obj;
 			secondNode.obj = firstNode.obj;
 			firstNode.obj = obj;
 			return true;
 		}
 		return false;
-		
+
 	}
 
 	@Override
 	public int indexOf(Predicate<T> predicate) {
 		Node<T> currentNode = head;
 		int index = 0;
-		while (!currentNode.obj.equals(tail.obj) && !predicate.test(currentNode.obj)) {
+		while (currentNode.next != null && !predicate.test(currentNode.obj)) {
 			currentNode = currentNode.next;
 			index++;
 		}
@@ -185,41 +216,37 @@ public class LinkedList<T> extends AbstractList<T> {
 	@Override
 	public int lastIndexOf(Predicate<T> predicate) {
 		Node<T> currentNode = tail;
-		int index = size-1;
-		while (!currentNode.obj.equals(head.obj) && !predicate.test(currentNode.obj)) {
+		int index = size - 1;
+		while (currentNode.prev != null && !predicate.test(currentNode.obj)) {
 			currentNode = currentNode.prev;
 			index--;
 		}
 		return predicate.test(currentNode.obj) ? index : -1;
 	}
-	
+
 	private boolean conditionRemoving(T current, Predicate<T> predicate) {
 		return predicate.test(current);
 	}
-	
-	@Override
-	public boolean removeIf(Predicate<T> predicate) {
-		Node <T> currentNode = head;
-		boolean res = false;
-		while (currentNode!=null) {
-			if (conditionRemoving(currentNode.obj, predicate)) {
-				removeNode(currentNode);
-				res = true;
-			}
-			currentNode = currentNode.next;
-		}
 
-		return res;
-	}
+//	@Override
+//	public boolean removeIf(Predicate<T> predicate) {
+//		Node<T> currentNode = head;
+//		boolean res = false;
+//		while (currentNode != null) {
+//			if (conditionRemoving(currentNode.obj, predicate)) {
+//				removeNode(currentNode);
+//				res = true;
+//			}
+//			currentNode = currentNode.next;
+//		}
+//
+//		return res;
+//	}
 
 	@Override
 	public void clean() {
-		Node <T> currentNode = head;
-		while(currentNode!=null) {
-			currentNode = currentNode.next;
-			size--;
-		}
-		tail = null;
+		head = tail = null;
+		size = 0;
 	}
 
 	private Node<T> getNodeRtL(int index) {
@@ -240,6 +267,37 @@ public class LinkedList<T> extends AbstractList<T> {
 
 	private Node<T> getNodeIndex(int index) {
 		return index > size / 2 ? getNodeRtL(index) : getNodeLtR(index);
+	}
+
+	@Override
+	public void sort(Comparator<T> comp) {
+		T arr[] = toArray();
+		Arrays.sort(arr, comp);
+		fillFromArray(arr);
+	}
+
+	private void fillFromArray(T[] arr) {
+		Node<T> current = head;
+		for (int i = 0; i < size; i++) {
+			current.obj = arr[i];
+			current = current.next;
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	private T[] toArray() {
+		T[] res = (T[]) new Object[size];
+		Node<T> current = head;
+		for (int i = 0; i < size; i++) {
+			res[i] = current.obj;
+			current = current.next;
+		}
+		return res;
+	}
+
+	@Override
+	public Iterator<T> iterator() {
+		return new LinkedListIterator();
 	}
 
 }

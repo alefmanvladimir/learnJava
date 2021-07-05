@@ -1,8 +1,8 @@
 package telran.utils;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.function.Predicate;
-
 
 @SuppressWarnings("unchecked")
 public class ArrayList<T> extends AbstractList<T> {
@@ -15,6 +15,27 @@ public class ArrayList<T> extends AbstractList<T> {
 
 	public ArrayList() {
 		this(DEFAULT_CAPACITY);
+	}
+
+	private class ArrayListIterator implements Iterator<T> {
+		int index = 0;
+
+		@Override
+		public boolean hasNext() {
+			return index < size;
+		}
+
+		@Override
+		public T next() {
+			return array[index++];
+		}
+
+		@Override
+		public void remove() {
+			ArrayList.this.remove(index-1);
+			index--;
+		}
+
 	}
 
 	@Override
@@ -90,9 +111,10 @@ public class ArrayList<T> extends AbstractList<T> {
 	}
 
 	private void clean(int sizeBefore) {
-		for (int i = size; i < sizeBefore; i++) {
+		for (int i = sizeBefore; i < size; i++) {
 			array[i] = null;
 		}
+		size = sizeBefore;
 	}
 
 	private boolean conditionRemoving(T current, Predicate<T> predicate) {
@@ -132,38 +154,43 @@ public class ArrayList<T> extends AbstractList<T> {
 
 	@Override
 	public int lastIndexOf(Predicate<T> predicate) {
-		int size = size()-1;
-		while (size >=0 && !predicate.test(array[size])) {
+		int size = size() - 1;
+		while (size >= 0 && !predicate.test(array[size])) {
 			size--;
 		}
 		return size >= 0 ? size : -1;
 	}
 
-	@Override
-	public boolean removeIf(Predicate<T> predicate) {
-		int sizeBeforeRemoving = size;
-		int currentIndex = 0;
-		for (int i = 0; i < sizeBeforeRemoving; i++) {
-			T current = array[i];
-			if (conditionRemoving(current, predicate)) {
-				size--;
-			} else {
-				array[currentIndex++] = array[i];
-			}
-		}
-		boolean res = sizeBeforeRemoving > size;
-		if (res) {
-			clean(sizeBeforeRemoving);
-		}
-		return res;
-	}
+//	@Override
+//	public boolean removeIf(Predicate<T> predicate) {
+//		int sizeBeforeRemoving = size;
+//		int currentIndex = 0;
+//		for (int i = 0; i < size; i++) {
+//			T current = array[i];
+//			if (conditionRemoving(current, predicate)) {
+//				sizeBeforeRemoving--;
+//			} else {
+//				array[currentIndex++] = array[i];
+//			}
+//		}
+//		boolean res = size > sizeBeforeRemoving;
+//		if (res) {
+//			clean(sizeBeforeRemoving);
+//		}
+//		return res;
+//	}
 
 	@Override
 	public void clean() {
-		while(size>0) {
-			array[size-1] = null;
+		while (size > 0) {
+			array[size - 1] = null;
 			size--;
 		}
+	}
+
+	@Override
+	public Iterator<T> iterator() {
+		return new ArrayListIterator();
 	}
 
 }
