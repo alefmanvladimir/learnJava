@@ -27,25 +27,25 @@ class RangeTest {
 			System.out.print(num + " ");
 		}
 
-		System.out.println(" - четные");
+		System.out.println(" - even numbers");
 
 		for (int num : range2) {
 			System.out.print(num + " ");
 		}
 		
-		System.out.println(" - нечетные ");
+		System.out.println(" - odd numbers ");
 
 		for (int num : range3) {
 			System.out.print(num + " ");
 		}
 		
-		System.out.println(" - все");
+		System.out.println(" - all");
 
 		for (int num : range4) {
 			System.out.print(num + " ");
 		}
 		
-		System.out.println(" - натуральные");
+		System.out.println(" - integers");
 	}
 
 }
