@@ -6,8 +6,16 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="it.next"/>
+		<item key="selection" value="getIndex"/>
 		<list key="findhistory">
+			<item value="getIndex"/>
+			<item value="listInt"/>
+			<item value="addAll"/>
+			<item value="LinkedList"/>
+			<item value="contains"/>
+			<item value="conta"/>
+			<item value="initialArrayTest"/>
+			<item value="capacity"/>
 			<item value="Integer.MAX_VALUE-10"/>
 			<item value="it.next"/>
 			<item value="Predicate"/>
@@ -15,16 +23,10 @@
 			<item value="index"/>
 			<item value="predicate"/>
 			<item value="indexOf"/>
-			<item value="removeIf"/>
-			<item value="remo"/>
-			<item value="before"/>
-			<item value="print"/>
-			<item value="conditionRemoving"/>
-			<item value="remove"/>
-			<item value="size--;"/>
-			<item value="addAll"/>
 		</list>
 		<list key="replacehistory">
+			<item value="setInt"/>
+			<item value="initialTableLength"/>
 			<item value="current"/>
 			<item value=""/>
 			<item value="sortTestIterator"/>
@@ -38,8 +40,8 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="626"/>
-		<item key="DIALOG_Y_ORIGIN" value="74"/>
+		<item key="DIALOG_X_ORIGIN" value="226"/>
+		<item key="DIALOG_Y_ORIGIN" value="137"/>
 		<item key="DIALOG_WIDTH" value="336"/>
 		<item key="DIALOG_HEIGHT" value="454"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>

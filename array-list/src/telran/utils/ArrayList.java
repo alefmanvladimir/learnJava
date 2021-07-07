@@ -32,8 +32,7 @@ public class ArrayList<T> extends AbstractList<T> {
 
 		@Override
 		public void remove() {
-			ArrayList.this.remove(index-1);
-			index--;
+			ArrayList.this.remove(--index);
 		}
 
 	}
