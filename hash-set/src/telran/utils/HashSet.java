@@ -20,7 +20,7 @@ public class HashSet<T> implements Set<T> {
 
 	private class SetIterator implements Iterator<T> {
 		int index = 0;
-		int linkedIndex = 0;
+		int prevIndex = 0;
 		Iterator<T> it;
 		int count = 0;
 		@Override
@@ -44,6 +44,7 @@ public class HashSet<T> implements Set<T> {
 					T obj = it.next();
 					count++;
 					if(!it.hasNext()) {
+						prevIndex = index;
 						index++;
 						it = null;
 					}
@@ -56,11 +57,8 @@ public class HashSet<T> implements Set<T> {
 		}
 		
 		public void remove() {
-			if(linkedIndex>0) {
-				hashTable[index].remove(--linkedIndex);
-			}  else {
-				hashTable[--index].remove(linkedIndex);
-			}
+			Iterator<T> itPrev = hashTable[prevIndex].iterator();	
+			itPrev.remove();
 			
 			size--;
 			count--;
