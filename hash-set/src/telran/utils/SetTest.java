@@ -32,6 +32,10 @@ Person p2 = new Person(2, "Alex");
 			assertTrue(setInt.contains(i));
 		}
 		assertFalse(setInt.contains(100));
+
+		for (Integer num : setInt) {
+			System.out.print(num + ", ");
+		}
 		
 	}
 

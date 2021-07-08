@@ -21,6 +21,7 @@ public class HashSet<T> implements Set<T> {
 	private class SetIterator implements Iterator<T> {
 		int index = 0;
 		int linkedIndex = 0;
+		Iterator<T> it;
 		int count = 0;
 		@Override
 		public boolean hasNext() {
@@ -29,23 +30,29 @@ public class HashSet<T> implements Set<T> {
 
 		@Override
 		public T next() {
-			while (hasNext() && hashTable[index] == null || hashTable[index].size()==0) {
+			while (hasNext() && (hashTable[index] == null || hashTable[index].size()==0)) {
 				index++;
+				
 			}
-
+			
 			if (hasNext()) {
-				count++;
-				if (hashTable[index].size() > linkedIndex + 1) {
-					return hashTable[index].get(linkedIndex++);
-					
-				} else {
-					T res = hashTable[index++].get(linkedIndex);
-					linkedIndex = 0;
-					return res;
+				if(it==null) {
+					it = hashTable[index].iterator();
 				}
+				
+				if(it.hasNext()) {
+					T obj = it.next();
+					count++;
+					if(!it.hasNext()) {
+						index++;
+						it = null;
+					}
+					return obj;
+					
+				}
+
 			}
 			return null;
-
 		}
 		
 		public void remove() {
