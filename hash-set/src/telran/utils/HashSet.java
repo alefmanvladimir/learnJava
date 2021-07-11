@@ -23,6 +23,7 @@ public class HashSet<T> implements Set<T> {
 		int prevIndex = 0;
 		Iterator<T> it;
 		int count = 0;
+
 		@Override
 		public boolean hasNext() {
 			return count < size;
@@ -30,39 +31,36 @@ public class HashSet<T> implements Set<T> {
 
 		@Override
 		public T next() {
-			while (hasNext() && (hashTable[index] == null || hashTable[index].size()==0)) {
+			while (hasNext() && (hashTable[index] == null || hashTable[index].size() == 0)) {
 				index++;
-				
 			}
-			
+
 			if (hasNext()) {
-				if(it==null) {
+				if (it == null) {
 					it = hashTable[index].iterator();
 				}
-				
-				if(it.hasNext()) {
+
+				if (it.hasNext()) {
 					T obj = it.next();
 					count++;
-					if(!it.hasNext()) {
+					if (!it.hasNext()) {
 						prevIndex = index;
 						index++;
 						it = null;
 					}
 					return obj;
-					
 				}
-
 			}
 			return null;
 		}
-		
+
 		public void remove() {
-			Iterator<T> itPrev = hashTable[prevIndex].iterator();	
+			Iterator<T> itPrev = hashTable[prevIndex].iterator();
 			itPrev.remove();
-			
+
 			size--;
 			count--;
-						
+
 		}
 
 	}

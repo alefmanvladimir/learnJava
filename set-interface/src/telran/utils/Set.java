@@ -71,6 +71,7 @@ public interface Set<T> extends Iterable<T>{
 		while (it.hasNext()) {
 			T obj = (T) it.next();
 			if(predicate.test(obj)) {
+				
 				it.remove();
 				res = true;
 			}

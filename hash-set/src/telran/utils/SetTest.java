@@ -2,6 +2,7 @@ package telran.utils;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.function.Predicate;
 
@@ -16,8 +17,10 @@ Person p1 = new Person(1, "Moshe");
 Person p2 = new Person(2, "Alex");
 	@BeforeEach
 	void setUp() throws Exception {
-		setInt =  new HashSet<>(1);
-		setString = new HashSet<>();
+//		setInt =  new HashSet<>(1);
+//		setString = new HashSet<>();
+		setInt =  new TreeSet<>();
+		setString = new TreeSet<>();
 
 		setInt.add(1);
 		setInt.add(2);
@@ -33,9 +36,7 @@ Person p2 = new Person(2, "Alex");
 		}
 		assertFalse(setInt.contains(100));
 
-		for (Integer num : setInt) {
-			System.out.print(num + ", ");
-		}
+		
 		
 	}
 
@@ -110,6 +111,25 @@ Person p2 = new Person(2, "Alex");
 		
 		
 	}
+	@Test
+	  void testIteratorWhenHAshTableLength16() throws Exception {
+	    setUp();
+	    setInt.add(6);
+	    setInt.add(7);
+	    setInt.add(8);
+	    setInt.add(16);
+	    setInt.add(17);
+	    setInt.add(33);
+	    int expected[] = { 1, 2, 3, 4, 5, 6, 7, 8, 16, 17, 33 };
+	    int[] resAfterIterator = new int[expected.length];
+	    int index = 0;
+	    for (Integer obj : setInt) {
+	      resAfterIterator[index] = obj;
+	      index++;
+	    }
+	    Arrays.sort(resAfterIterator);
+	    assertArrayEquals(expected, resAfterIterator);
+	  }
 	
 
 

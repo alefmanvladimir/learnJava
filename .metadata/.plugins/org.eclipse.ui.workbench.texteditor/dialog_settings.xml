@@ -6,8 +6,14 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="Person"/>
+		<item key="selection" value="System"/>
 		<list key="findhistory">
+			<item value="System"/>
+			<item value="this"/>
+			<item value="terator"/>
+			<item value="iterator"/>
+			<item value="SetIterator"/>
+			<item value="removeNode"/>
 			<item value="Person"/>
 			<item value="count"/>
 			<item value="initialArrayTest"/>
@@ -17,12 +23,6 @@
 			<item value="listInt"/>
 			<item value="addAll"/>
 			<item value="LinkedList"/>
-			<item value="conta"/>
-			<item value="capacity"/>
-			<item value="Integer.MAX_VALUE-10"/>
-			<item value="it.next"/>
-			<item value="Predicate"/>
-			<item value="next"/>
 		</list>
 		<list key="replacehistory">
 			<item value="setInt"/>
