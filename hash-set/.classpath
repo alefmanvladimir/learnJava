@@ -7,10 +7,9 @@
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/set-interface"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/list-interface"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/linked-list"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/abstract-list"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/TreeSet"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/linked-list"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/list-interface"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/set-interface"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

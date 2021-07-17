@@ -22,11 +22,14 @@ Person p2 = new Person(2, "Alex");
 		setInt =  new TreeSet<>();
 		setString = new TreeSet<>();
 
-		setInt.add(1);
-		setInt.add(2);
-		setInt.add(3);
-		setInt.add(4);
-		setInt.add(5);
+		setInt.add(7);
+		setInt.add(6);
+		setInt.add(9);
+		setInt.add(8);
+		setInt.add(12);
+		setInt.add(10);
+		setInt.add(13);
+		setInt.add(11);
 		
 	}
 	@Test

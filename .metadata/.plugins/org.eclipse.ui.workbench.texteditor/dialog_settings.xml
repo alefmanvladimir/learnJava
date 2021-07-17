@@ -6,23 +6,23 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="System"/>
+		<item key="selection" value="SortedSet"/>
 		<list key="findhistory">
+			<item value="SortedSet"/>
 			<item value="System"/>
+			<item value="ceiling"/>
+			<item value="treeInt"/>
+			<item value="system"/>
+			<item value="addall"/>
+			<item value="removeif"/>
+			<item value="iterator"/>
+			<item value="Syste"/>
 			<item value="this"/>
 			<item value="terator"/>
-			<item value="iterator"/>
 			<item value="SetIterator"/>
 			<item value="removeNode"/>
 			<item value="Person"/>
 			<item value="count"/>
-			<item value="initialArrayTest"/>
-			<item value="contains"/>
-			<item value="remove"/>
-			<item value="getIndex"/>
-			<item value="listInt"/>
-			<item value="addAll"/>
-			<item value="LinkedList"/>
 		</list>
 		<list key="replacehistory">
 			<item value="setInt"/>
