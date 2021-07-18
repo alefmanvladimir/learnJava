@@ -8,7 +8,10 @@ class LineryRecursionTest {
 	void myTest(){
 		assertEquals(-30, LineryRecursion.multiple(10, -3));
 		String str = "Hello";
-		System.out.println(str.substring(0, str.length()));
+		String str2 = new String("lo");
+		System.out.println(LineryRecursion.func(str, str2, 0));
+		char a = 'd';
+		
 	}
 	@Test
 	void pow() {

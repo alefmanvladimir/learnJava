@@ -28,8 +28,8 @@ public class LineryRecursion {
 	}
 
 	public static int square(int x) {
-		//no cycles, no multiply, no addition methods, no static fields
-		x = x < 0 ? -x: x;
+		// no cycles, no multiply, no addition methods, no static fields
+		x = x < 0 ? -x : x;
 
 		if (x == 0) {
 			return 0;
@@ -39,6 +39,28 @@ public class LineryRecursion {
 
 	}
 
+	public static int func(String str, String substr, int count) {
+		if (str.length() == 0 && count != substr.length()) {
+			return 0;
+		}
+
+		if (count == substr.length()) {
+			return 1;
+		}
+		if (str.charAt(0) == substr.charAt(count)) {
+
+			return func(str.substring(1, str.length()), substr, count + 1);
+
+		} else if(count==0){
+			
+			return func(str.substring(1, str.length()), substr, count);
+		} else {
+			count = 0;
+			return func(str, substr, count);
+		}
+		
+	}
+
 	public static boolean isSubstring(String str, String substr) {
 		// TODO write function
 		// boolean isSubstring (String str, String substr)
@@ -46,16 +68,7 @@ public class LineryRecursion {
 		// 'string'.
 		// Challenges: 1. To apply only following methods of the class String:
 		// charAt(int ind); String substring(int ind); int length(); 2. No cycles;
-		
-		if(str.length()<substr.length()) {
-			return false;
-		}
-
-		if(str.substring(0, substr.length()).compareTo(substr)==0) {
-			return true;
-		}
-
-		return isSubstring(str.substring(1, str.length()), substr);
+		return func(str, substr, 0) > 0 ? true : false;
 	}
 
 }
