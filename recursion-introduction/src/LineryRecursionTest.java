@@ -9,7 +9,7 @@ class LineryRecursionTest {
 		assertEquals(-30, LineryRecursion.multiple(10, -3));
 		String str = "Hello";
 		String str2 = new String("lo");
-//		System.out.println(LineryRecursion.comparisonStr(str, str2, 0));
+//		System.out.println(LineryRecursion.comparingStr(str, str2, 0));
 		char a = 'd';
 		
 	}
