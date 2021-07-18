@@ -39,7 +39,7 @@ public class LineryRecursion {
 
 	}
 
-	public static int func(String str, String substr, int count) {
+	private static int comparisonStr(String str, String substr, int count) {
 		if (str.length() == 0 && count != substr.length()) {
 			return 0;
 		}
@@ -49,14 +49,14 @@ public class LineryRecursion {
 		}
 		if (str.charAt(0) == substr.charAt(count)) {
 
-			return func(str.substring(1, str.length()), substr, count + 1);
+			return comparisonStr(str.substring(1, str.length()), substr, count + 1);
 
 		} else if(count==0){
 			
-			return func(str.substring(1, str.length()), substr, count);
+			return comparisonStr(str.substring(1, str.length()), substr, count);
 		} else {
 			count = 0;
-			return func(str, substr, count);
+			return comparisonStr(str, substr, count);
 		}
 		
 	}
@@ -68,7 +68,7 @@ public class LineryRecursion {
 		// 'string'.
 		// Challenges: 1. To apply only following methods of the class String:
 		// charAt(int ind); String substring(int ind); int length(); 2. No cycles;
-		return func(str, substr, 0) > 0 ? true : false;
+		return comparisonStr(str, substr, 0) > 0 ? true : false;
 	}
 
 }
