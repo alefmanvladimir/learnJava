@@ -49,11 +49,11 @@ public class LineryRecursion {
 		}
 		if (str.charAt(0) == substr.charAt(count)) {
 
-			return comparingStr(str.substring(1, str.length()), substr, count + 1);
+			return comparingStr(str.substring(1), substr, count + 1);
 
 		} else if(count==0){
 			
-			return comparingStr(str.substring(1, str.length()), substr, count);
+			return comparingStr(str.substring(1), substr, count);
 		} else {
 			count = 0;
 			return comparingStr(str, substr, count);
