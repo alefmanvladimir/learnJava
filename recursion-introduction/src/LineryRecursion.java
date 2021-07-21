@@ -50,9 +50,15 @@ public class LineryRecursion {
 		if (str.charAt(0) == substr.charAt(count)) {
 
 			return comparingStr(str.substring(1), substr, count + 1);
+<<<<<<< HEAD
 
 		} else if (count == 0) {
 
+=======
+
+		} else if(count==0){
+			
+>>>>>>> 81446a42cc7647683f45591b7690f8d4df92ba38
 			return comparingStr(str.substring(1), substr, count);
 		} else {
 			count = 0;
