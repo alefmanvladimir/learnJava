@@ -13,4 +13,5 @@
     <fullyQualifiedTypeName name="java.util.Comparator"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
     <fullyQualifiedTypeName name="java.util.TreeSet"/>
+    <fullyQualifiedTypeName name="telran.utils.TreeSet.Node"/>
 </qualifiedTypeNameHistroy>

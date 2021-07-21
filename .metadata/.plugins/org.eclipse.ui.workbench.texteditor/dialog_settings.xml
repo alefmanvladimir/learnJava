@@ -6,8 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="get"/>
+		<item key="selection" value="getNext"/>
 		<list key="findhistory">
+			<item value="getNext"/>
 			<item value="get"/>
 			<item value="charAt"/>
 			<item value="char"/>
@@ -22,7 +23,6 @@
 			<item value="iterator"/>
 			<item value="Syste"/>
 			<item value="this"/>
-			<item value="terator"/>
 		</list>
 		<list key="replacehistory">
 			<item value="setInt"/>
