@@ -15,7 +15,7 @@ class LineryRecursionTest {
 	}
 	@Test
 	void pow() {
-		assertEquals(1000, LineryRecursion.pow(10, 3));
+		assertEquals(-1000, LineryRecursion.pow(10, -3));
 		assertEquals(16, LineryRecursion.pow(2, 4));
 	}
 

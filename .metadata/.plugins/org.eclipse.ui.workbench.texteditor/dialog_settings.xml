@@ -6,8 +6,12 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="SortedSet"/>
+		<item key="selection" value="get"/>
 		<list key="findhistory">
+			<item value="get"/>
+			<item value="charAt"/>
+			<item value="char"/>
+			<item value="=="/>
 			<item value="SortedSet"/>
 			<item value="System"/>
 			<item value="ceiling"/>
@@ -19,10 +23,6 @@
 			<item value="Syste"/>
 			<item value="this"/>
 			<item value="terator"/>
-			<item value="SetIterator"/>
-			<item value="removeNode"/>
-			<item value="Person"/>
-			<item value="count"/>
 		</list>
 		<list key="replacehistory">
 			<item value="setInt"/>

@@ -13,6 +13,7 @@
 <item elementID="=TreeSet" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=sorted-inerface" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=set-test" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=tree-non-linear-test" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 </workingSet>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1620736920262_2" label="Window Working Set" name="Aggregate for window 1620736920261"/>
 <mruList name="Lists"/>

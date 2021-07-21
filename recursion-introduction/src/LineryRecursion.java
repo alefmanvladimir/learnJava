@@ -43,22 +43,22 @@ public class LineryRecursion {
 		if (str.length() == 0 && count != substr.length()) {
 			return 0;
 		}
-
+		
 		if (count == substr.length()) {
 			return 1;
 		}
 		if (str.charAt(0) == substr.charAt(count)) {
 
-			return comparingStr(str.substring(1, str.length()), substr, count + 1);
+			return comparingStr(str.substring(1), substr, count + 1);
 
-		} else if(count==0){
-			
-			return comparingStr(str.substring(1, str.length()), substr, count);
+		} else if (count == 0) {
+
+			return comparingStr(str.substring(1), substr, count);
 		} else {
 			count = 0;
 			return comparingStr(str, substr, count);
 		}
-		
+
 	}
 
 	public static boolean isSubstring(String str, String substr) {
