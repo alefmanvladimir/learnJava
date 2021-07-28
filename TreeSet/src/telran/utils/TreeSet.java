@@ -326,20 +326,20 @@ public class TreeSet<T> implements SortedSet<T> {
 	}
 
 	public void balance() {
-		List <Node<T>> ar = getTreeAsArray();
-		root = getRoot(ar, 0, ar.size()-1, null);
+		Node<T> ar []= getTreeAsArray();
+		root = getRoot(ar, 0, ar.length-1, null);
 		
 	}
 
-	private Node<T> getRoot(List<Node<T>> ar, int left, int right, Node<T> parent) {
+	private Node<T> getRoot(Node<T> ar [], int left, int right, Node<T> parent) {
 		if(right<left) {
 			return null;
 		}
 
 		int middle = (left+right)/2;
-		Node<T> res = ar.get(middle);
-		Node<T> leftRoot = getRoot(ar, left, middle-1, ar.get(middle));
-		Node<T> rightRoot = getRoot(ar, middle+1, right, ar.get(middle));
+		Node<T> res = ar[middle];
+		Node<T> leftRoot = getRoot(ar, left, middle-1, ar[middle]);
+		Node<T> rightRoot = getRoot(ar, middle+1, right, ar[middle]);
 		
 		res.left = leftRoot;
 		res.right = rightRoot;
@@ -347,11 +347,12 @@ public class TreeSet<T> implements SortedSet<T> {
 		return res;
 	}
 
-	public List <Node<T>> getTreeAsArray() {
-		List <Node<T>> res = new ArrayList<>(size());
+	public Node<T> [] getTreeAsArray() {
+		Node<T> res [] = (Node<T>[]) new Node[size()];
+		int index = 0;
 		Node<T> currentNode = root;
 		while(currentNode!=null) {
-			res.add(currentNode);
+			res[index++] = currentNode;
 			currentNode = getNextIterator(currentNode);
 		}
 		return res;

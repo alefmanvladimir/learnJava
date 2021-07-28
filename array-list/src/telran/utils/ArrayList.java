@@ -36,7 +36,7 @@ public class ArrayList<T> extends AbstractList<T> {
 		}
 
 	}
-
+	
 	@Override
 	public void add(T obj) {
 		if (size >= array.length) {
