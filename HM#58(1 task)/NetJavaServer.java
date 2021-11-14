@@ -3,7 +3,7 @@ package telran.net;
 public abstract class NetJavaServer extends Thread{
 	int port;
 	ApplProtocolJava protocol;
-	boolean isShutdown;
+	static boolean isShutdown;
 	
 	public NetJavaServer(int port, ApplProtocolJava protocol) {
 		this.port = port;

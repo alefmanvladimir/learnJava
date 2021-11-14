@@ -11,7 +11,6 @@ import java.util.concurrent.TimeUnit;
 import telran.net.NetJavaServer;
 
 public class TcpJavaServer extends NetJavaServer {
-	private static final int TIMEOUT = 1000;
 	private ServerSocket serverSocket;
 	ExecutorService executor;
 
@@ -33,7 +32,7 @@ public class TcpJavaServer extends NetJavaServer {
 
 		while (true) {
 			try {
-				serverSocket.setSoTimeout(TIMEOUT);
+				serverSocket.setSoTimeout(1000);
 				Socket socket = serverSocket.accept();
 				executor.execute(new Thread(new TcpClientServer(socket, protocol)));
 				if (isShutdown)
@@ -48,18 +47,15 @@ public class TcpJavaServer extends NetJavaServer {
 				System.out.println(e.getMessage());
 			}
 		}
-
 	}
 
 	private void shutdowning() {
-		executor.shutdown();
+		executor.shutdownNow();
 		try {
-			executor.awaitTermination(10, TimeUnit.SECONDS);
 			serverSocket.close();
 			System.out.println("Server is closed");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
-
 }
